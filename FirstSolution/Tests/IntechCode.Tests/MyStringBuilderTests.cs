@@ -59,6 +59,26 @@ namespace IntechCode.Tests
 
         [Fact]
         [Test]
+        public void tests_max_capacity_of_our_stringbuilder_and_keep_content()
+        {
+            string s1 = "I'm programming in CSharp .NET!";
+            string s2 = " ...And I love it so much!!!!";
+
+            MyStringBuilder msb = new MyStringBuilder();
+            msb.Length.Should().Be(0);
+
+            msb.Append(s1);
+            msb.Length.Should().Be(31);
+
+            string s = msb.ToString();
+            s.Should().Be(s1);
+
+            msb.Append(s2);
+            msb.Length.Should().Be(s1.Length + s2.Length);
+        }
+
+        [Fact]
+        [Test]
         public void clear_our_little_stringbuilder()
         {
             MyStringBuilder msb = new MyStringBuilder("Programming!");

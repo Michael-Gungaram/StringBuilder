@@ -10,6 +10,13 @@ namespace IntechCode.IntechCollection
 
         const int DefaultCapacity = 16;
 
+        public MyStringBuilder()
+            :this(DefaultCapacity)
+        {
+            _chunks = new char[DefaultCapacity];
+            _chunkLength = 0;
+        }
+
         public MyStringBuilder(int capacity)
         {
             _capacity = capacity;
@@ -59,11 +66,28 @@ namespace IntechCode.IntechCollection
         public void Append(string toAppend)
         {
             int i;
+
+            if (toAppend.Length > _capacity) CleanAndReallocate();
             for(i = _chunkLength; i < toAppend.Length; i++)
             {
+                if (i > _capacity) CleanAndReallocate();
                 _chunks[i] = toAppend[i];
                 _chunkLength++;
             }
+        }
+
+        private void CleanAndReallocate()
+        {
+            int i;
+            _capacity *= 2;
+            char[] buffer = new char[_capacity];
+
+            if(_chunks.Length > 0)
+            {
+                for(i = 0; i < _chunks.Length; i++) buffer[i] = _chunks[i];
+                _chunks = buffer;
+            }
+            _chunks = buffer;
         }
 
         public void Clear()
