@@ -38,7 +38,8 @@ namespace IntechCode.IntechCollection
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _items = new T[DefaultCapacity];
+            _count = 0;
         }
 
         public bool Remove(T item)
