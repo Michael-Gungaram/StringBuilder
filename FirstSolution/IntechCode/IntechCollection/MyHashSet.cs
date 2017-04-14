@@ -45,7 +45,7 @@ namespace IntechCode.IntechCollection
         public bool Remove(T item)
         {
             if( !Contains( item ) ) return false;
-            Array.Copy( _items, _count + 1, _items, _count, _count - _count - 1 );
+            Array.Copy( _items, _count + 1, _items, _count, _count - 1 );
             _items[ --_count ] = default( T );
             return true;
         }
