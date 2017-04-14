@@ -21,6 +21,7 @@ namespace IntechCode.IntechCollection
 
         public bool Add(T item)
         {
+            if( Contains( item ) ) return false;
             if( _count == _items.Length )
             {
                 T[] newItems = new T[ _items.Length * 2 ];
@@ -42,26 +43,30 @@ namespace IntechCode.IntechCollection
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if( !Contains( item ) ) return false;
+            Array.Copy( _items, _count + 1, _items, _count, _count - _count - 1 );
+            _items[ --_count ] = default( T );
+            return true;
         }
 
         public bool Contains(T item)
         {
             if( item == null ) throw new ArgumentNullException();
 
-            int index = FindItem( item );
-            if( index >= 0 ) return true;
+            int itemIndex = FindItem( item );
+            if( itemIndex >= 0 ) return true;
             return false;
         }
 
         private int FindItem(T item)
         {
-            int i = -1;
+            int i = 0;
             while( i <= _items.Length )
             {
                 if( item.Equals( _items[ i ] ) ) return i;
+                i++;
             }
-            return i;
+            return -1;
         }
     }
 }

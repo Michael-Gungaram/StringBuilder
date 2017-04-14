@@ -6,7 +6,7 @@ namespace IntechCode.IntechCollection
 {
     interface IMyHashSet<T>
     {
-        void Add(T item);
+        bool Add(T item);
 
         void Clear();
 
