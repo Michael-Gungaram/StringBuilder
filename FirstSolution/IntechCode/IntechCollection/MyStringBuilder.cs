@@ -65,14 +65,15 @@ namespace IntechCode.IntechCollection
 
         public void Append(string toAppend)
         {
-            int i;
+            int i = 0;
 
-            if (toAppend.Length > _capacity) CleanAndReallocate();
-            for(i = _chunkLength; i < toAppend.Length; i++)
+            if (toAppend.Length >= _capacity) CleanAndReallocate();
+            while(i != toAppend.Length)
             {
-                if (i > _capacity) CleanAndReallocate();
-                _chunks[i] = toAppend[i];
+                if (_chunkLength >= _capacity) CleanAndReallocate();
+                _chunks[_chunkLength] = toAppend[i];
                 _chunkLength++;
+                i++;
             }
         }
 

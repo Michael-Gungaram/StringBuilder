@@ -70,11 +70,16 @@ namespace IntechCode.Tests
             msb.Append(s1);
             msb.Length.Should().Be(31);
 
-            string s = msb.ToString();
-            s.Should().Be(s1);
+            string s3 = msb.ToString();
+            s3.Should().Be(s1);
 
             msb.Append(s2);
             msb.Length.Should().Be(s1.Length + s2.Length);
+
+            string s4 = String.Concat(s1, s2);
+            string s5 = msb.ToString();
+
+            s5.Should().Equals(s4);
         }
 
         [Fact]
