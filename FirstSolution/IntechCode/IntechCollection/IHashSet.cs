@@ -10,7 +10,7 @@ namespace IntechCode.IntechCollection
 
         void Clear();
 
-        void Remove(T item);
+        bool Remove(T item);
 
         bool Contains(T value);
     }

@@ -19,7 +19,7 @@ namespace IntechCode.IntechCollection
 
         public int Count => _count;
 
-        public void Add(T item)
+        public bool Add(T item)
         {
             if( _count == _items.Length )
             {
@@ -32,6 +32,7 @@ namespace IntechCode.IntechCollection
                 _items[ _count ] = item;
             }
             ++_count;
+            return true;
         }
 
         public void Clear()
@@ -39,7 +40,7 @@ namespace IntechCode.IntechCollection
             throw new NotImplementedException();
         }
 
-        public void Remove(T item)
+        public bool Remove(T item)
         {
             throw new NotImplementedException();
         }
