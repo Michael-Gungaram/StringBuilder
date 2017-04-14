@@ -74,5 +74,14 @@ namespace IntechCode.Tests
 
             mhs.Contains( "Item3" ).Should().BeFalse();
         }
+
+        [Fact]
+        [Test]
+        public void tests_capacity_of_hashset()
+        {
+            MyHashSet<int> mh = new MyHashSet<int>();
+            for(int i = 0; i < 128; i++ ) mh.Add( i );
+            mh.Count.Should().Be( 127 );
+        }
     }
 }
