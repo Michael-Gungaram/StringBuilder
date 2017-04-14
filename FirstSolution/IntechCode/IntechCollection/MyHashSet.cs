@@ -45,9 +45,23 @@ namespace IntechCode.IntechCollection
             throw new NotImplementedException();
         }
 
-        public bool Contains(T value)
+        public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            if( item == null ) throw new ArgumentNullException();
+
+            int index = FindItem( item );
+            if( index >= 0 ) return true;
+            return false;
+        }
+
+        private int FindItem(T item)
+        {
+            int i = -1;
+            while( i <= _items.Length )
+            {
+                if( item.Equals( _items[ i ] ) ) return i;
+            }
+            return i;
         }
     }
 }
