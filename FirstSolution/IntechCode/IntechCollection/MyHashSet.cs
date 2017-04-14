@@ -61,7 +61,7 @@ namespace IntechCode.IntechCollection
         private int FindItem(T item)
         {
             int i = 0;
-            while( i <= _items.Length )
+            while( i < _items.Length )
             {
                 if( item.Equals( _items[ i ] ) ) return i;
                 i++;
